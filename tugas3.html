@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan/Tugas</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+
+    
+    <form name="kalkulator">
+        <fieldset>
+            <label for="Input Bilangan 1">Input Bilangan 1 </label>
+            <input type="text" id="Input Bilangan 1" name="bil1" value="9"><br><br>
+
+            <label for="Input Bilangan 2">Input Bilangan 2 </label>
+            <input type="text" id="Input Bilangan 2" name="bil2" value="3"><br><br>
+
+           
+            <button type="button" onclick="hitung(event, 'jumlah')">+</button>
+            <button type="button" onclick="hitung(event, 'kurang')">-</button>
+            <button type="button" onclick="hitung(event, 'kali')">×</button>
+            <button type="button" onclick="hitung(event, 'bagi')">/</button>
+            <br><br>
+
+            <label for="output">Ouput</label>
+            <input type="text" name="total" id="output" readonly />
+        </fieldset>
+    </form>
+
+    <script>
+    // PERBAIKAN SCRIPT: Menerima 'e' (event) untuk mematikan auto-refresh
+    function hitung(e, operasi) {
+        // Baris ini wajib agar browser tidak me-refresh halaman
+        e.preventDefault(); 
+
+        let bilangan1 = Number(document.kalkulator.bil1.value);
+        let bilangan2 = Number(document.kalkulator.bil2.value);
+        let hasil = 0;
+
+        // Logika perhitungan
+        if (operasi === 'jumlah') {
+            hasil = bilangan1 + bilangan2;
+        } else if (operasi === 'kurang') {
+            hasil = bilangan1 - bilangan2;
+        } else if (operasi === 'kali') {
+            hasil = bilangan1 * bilangan2;
+        } else if (operasi === 'bagi') {
+            hasil = bilangan2 !== 0 ? bilangan1 / bilangan2 : "Error (Bagi 0)";
+        }
+
+        // Mengisi kolom Output
+        document.kalkulator.total.value = hasil;
+    }
+    </script>
+
+</body>
+</html>
